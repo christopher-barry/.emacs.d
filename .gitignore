@@ -1,0 +1,16 @@
+# gitignore file for various emacs dotfiles
+#
+
+auto-save-list/
+backups/
+desktop/
+el/
+elpa/
+project-defs/
+url/
+var/
+.custom.el
+.recentf
+session.*
+tramp
+sunrise-manual

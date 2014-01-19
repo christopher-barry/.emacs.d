@@ -1,0 +1,26 @@
+#!/bin/bash
+# Run emacsclient if a server is running
+# otherwise start emacs, which intializes
+# the server in .emacs as "(server)". You'll need
+# to add that to your .emacs separately.
+
+# set EDITOR=/path/to/this/script
+# to use this method of launching emacs from mc
+# which will not block mc, allowing multiple files
+# to be open in the editor at once from mc.
+
+# also make this script the executable in your
+# emacs.desktop file. I like to put the following:
+# exec /path/to/edit --create-frame
+# this has the result of opening a new window, but still
+# uses the same emacs instance.
+
+args=${@:-~}
+EMACS=emacs24
+
+server_running="$(pgrep 'emacs24')"
+[[ ${server_running} ]] && {
+    exec emacsclient ${args} &
+} || {
+    exec ${EMACS} ${args//--create-frame/} &
+}

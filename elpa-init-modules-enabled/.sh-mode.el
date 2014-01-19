@@ -1,0 +1,1 @@
+/home/cbarry/.emacs.d/elpa-init-modules-available/.sh-mode.el
