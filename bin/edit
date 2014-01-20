@@ -11,8 +11,8 @@
 
 # also make this script the executable in your
 # emacs.desktop file. I like to put the following:
-# exec /path/to/edit --create-frame
-# this has the result of opening a new window, but still
+# 'exec /path/to/edit --create-frame &' as this has
+# the result of opening a new window, but still
 # uses the same emacs instance.
 
 args=${@:-~}
