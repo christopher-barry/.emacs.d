@@ -38,7 +38,10 @@
 (global-set-key [%] 'match-paren)
 
 ;; switch active buffer
-(global-set-key [(meta control tab)] `switch-to-other-buffer)
+(global-set-key [(shift tab)] `switch-to-other-buffer)
+
+;; switch to next window
+(global-set-key [(control tab)] `other-window)
 
 ;; find regexp in multiple buffers
 (global-set-key [(control f9)] 'all-occur)
