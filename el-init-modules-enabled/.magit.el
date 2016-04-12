@@ -1,1 +1,0 @@
-/home/cbarry/.emacs.d/el-init-modules-available/.magit.el

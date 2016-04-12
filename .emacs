@@ -178,7 +178,7 @@
 (remove-hook 'kill-buffer-query-functions 'server-kill-buffer-query-function)
 
 ;; final window size
-(setq default-frame-alist '((width . 234) (height . 69)))
+(setq default-frame-alist '((width . 235) (height . 69)))
 
 ;; setup local lisp load dirs
 (let ((default-directory "~/.emacs.d/elpa/"))
