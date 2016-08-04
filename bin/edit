@@ -1,4 +1,10 @@
 #!/bin/bash
+
+# This is a multicall script:
+#  * called as 'edit', starts a server or emacsclient in it's own window.
+#  * called as 'edit-nw', starts a terminal-based session.
+
+# As edit:
 # Run emacsclient if a server is running
 # otherwise start emacs, which intializes
 # the server in .emacs as "(server)". You'll need
@@ -18,9 +24,18 @@
 args=${@:-~}
 EMACS=emacs24
 
-server_running="$(pgrep 'emacs24')"
-[[ ${server_running} ]] && {
-    exec emacsclient ${args} &
-} || {
-    exec ${EMACS} ${args//--create-frame/} &
-}
+case $(basename  $0) in
+
+    edit) # emacs in it's own window
+        server_running="$(pgrep 'emacs24')"
+        [[ ${server_running} ]] && {
+            exec emacsclient ${args} &
+        } || {
+            exec ${EMACS} ${args//--create-frame/} &
+        }
+        ;;
+
+    edit-nw) # emacs in a terminal
+        ${EMACS} -nw ${args}
+        ;;
+esac
