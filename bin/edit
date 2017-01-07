@@ -3,12 +3,15 @@
 # This is a multicall script:
 #  * called as 'edit', starts a server or emacsclient in it's own window.
 #  * called as 'edit-nw', starts a terminal-based session.
+# You will need to create a symlink named 'edit-nw' pointing to 'edit' to
+# use the terminal-only mode.
 
 # As edit:
-# Run emacsclient if a server is running
-# otherwise start emacs, which intializes
+# Runs emacsclient if a server is running.
+# Otherwise start emacs, which intializes
 # the server in .emacs as "(server)". You'll need
 # to add that to your .emacs separately.
+
 
 # set EDITOR=/path/to/this/script
 # to use this method of launching emacs from mc
@@ -21,7 +24,7 @@
 # the result of opening a new window, but still
 # uses the same emacs instance.
 
-args=${@:-~}
+args=${@:-${PWD}}
 EMACS=emacs24
 
 case $(basename  $0) in
@@ -36,6 +39,6 @@ case $(basename  $0) in
         ;;
 
     edit-nw) # emacs in a terminal
-        ${EMACS} -nw ${args}
+        exec ${EMACS} -nw ${args}
         ;;
 esac
